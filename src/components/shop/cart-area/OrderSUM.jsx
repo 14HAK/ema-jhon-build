@@ -1,4 +1,15 @@
 const OrderSUM = ({ cartProduct }) => {
+  let totalPrice = cartProduct.reduce((previous, product) => {
+    return previous + product.price;
+  }, 0);
+
+  let shippingCharge = cartProduct.reduce((previous, product) => {
+    return previous + product.shipping;
+  }, 0);
+
+  let tax = Number(((1.3 / 100) * totalPrice).toFixed(2));
+  let grandTotal = totalPrice + shippingCharge + tax;
+
   return (
     <div className='h-screen'>
       <section
@@ -13,17 +24,21 @@ const OrderSUM = ({ cartProduct }) => {
             <dt className='pt-5 text-lg'>
               Selected Items: {cartProduct.length}
             </dt>
-            <dd className=''>Total Price: </dd>
+            <dd className=''>Total Price: ${totalPrice} </dd>
           </div>
           <div className=''>
             <dt className=''>
-              <span className='text-lg'>Shipping Charge: </span>
+              <span className='text-lg'>
+                Shipping Charge: ${shippingCharge}
+              </span>
             </dt>
-            <dd className='text-lg'>Tax: </dd>
+            <dd className='text-lg'>Tax: ${tax}</dd>
           </div>
           <div className=''>
             <dt className=''>
-              <span className='text-xl font-semibold pt-5'>Grand Total: </span>
+              <span className='text-xl font-semibold pt-5'>
+                Grand Total: ${grandTotal}
+              </span>
             </dt>
             <hr className='border border-slate-700' />
           </div>
