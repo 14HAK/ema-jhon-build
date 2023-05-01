@@ -1,14 +1,20 @@
 const OrderSUM = ({ cartProduct }) => {
+  for (const product of cartProduct) {
+    product.quantity = product.quantity || 1;
+  }
+
   let totalPrice = cartProduct.reduce((previous, product) => {
-    return previous + product.price;
+    return previous + product.price * product.quantity;
   }, 0);
 
   let shippingCharge = cartProduct.reduce((previous, product) => {
     return previous + product.shipping;
   }, 0);
 
-  let tax = Number(((1.3 / 100) * totalPrice).toFixed(2));
+  let tax = totalPrice * 0.007;
+  let taxInt = tax.toFixed(1);
   let grandTotal = totalPrice + shippingCharge + tax;
+  let grandTotalInt = grandTotal.toFixed(1);
 
   return (
     <div className='h-screen'>
@@ -32,12 +38,12 @@ const OrderSUM = ({ cartProduct }) => {
                 Shipping Charge: ${shippingCharge}
               </span>
             </dt>
-            <dd className='text-lg'>Tax: ${tax}</dd>
+            <dd className='text-lg'>Tax: ${taxInt} </dd>
           </div>
           <div className=''>
             <dt className=''>
               <span className='text-xl font-semibold pt-5'>
-                Grand Total: ${grandTotal}
+                Grand Total: ${grandTotalInt}
               </span>
             </dt>
             <hr className='border border-slate-700' />

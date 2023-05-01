@@ -23,4 +23,4 @@ const getStoredCart = () => {
   return cart;
 };
 
-export { addToCart };
+export { addToCart, getStoredCart };
