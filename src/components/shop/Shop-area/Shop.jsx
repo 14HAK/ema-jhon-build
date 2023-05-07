@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import OrderSUM from '../cart-area/OrderSUM';
+
 import Card from './card/Card';
 import { addToCart, getStoredCart } from '../../../lib/utilities/demo';
+import CartSummary from '../cart-area/CartSummary';
 
-const Page = () => {
+const Shop = () => {
   const [products, SetProducts] = useState([]);
   const [cartProduct, setCartProduct] = useState([]);
 
@@ -48,10 +49,10 @@ const Page = () => {
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <OrderSUM cartProduct={cartProduct}></OrderSUM>
+        <CartSummary cartProduct={cartProduct}></CartSummary>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default Shop;

@@ -1,4 +1,4 @@
-const OrderSUM = ({ cartProduct }) => {
+const CartSummary = ({ cartProduct }) => {
   for (const product of cartProduct) {
     product.quantity = product.quantity || 1;
   }
@@ -23,7 +23,7 @@ const OrderSUM = ({ cartProduct }) => {
         className='fixed border border-slate-400 p-5 rounded-md'
       >
         <h2 id='summary-heading' className='text-2xl text-center font-bold'>
-          Order summary
+          Cart Summary
         </h2>
         <dl className=''>
           <div className=''>
@@ -70,4 +70,4 @@ const OrderSUM = ({ cartProduct }) => {
   );
 };
 
-export default OrderSUM;
+export default CartSummary;

@@ -10,16 +10,16 @@ const Header = () => {
 
       <nav>
         <ul className='flex justify-between items-center text-white'>
-          <a href='/home'>
-            <li className='pl-5'>Order</li>
+          <a href='/shop'>
+            <li className='pl-5'>Shop</li>
           </a>
-          <a href='/about'>
-            <li className='pl-5'>Order Review</li>
+          <a href='/orders'>
+            <li className='pl-5'>Orders</li>
           </a>
-          <a href='/nam'>
-            <li className='pl-5'>Manage Inventory</li>
+          <a href='/inventory'>
+            <li className='pl-5'>Inventory</li>
           </a>
-          <a href='/bbb'>
+          <a href='/login'>
             <li className='pl-5'>Login</li>
           </a>
         </ul>
