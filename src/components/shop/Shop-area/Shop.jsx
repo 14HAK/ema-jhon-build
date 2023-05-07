@@ -3,36 +3,12 @@ import { useEffect, useState } from 'react';
 import Card from './card/Card';
 import { addToCart, getStoredCart } from '../../../lib/utilities/demo';
 import CartSummary from '../cart-area/CartSummary';
+import { useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
-  const [products, SetProducts] = useState([]);
-  const [cartProduct, setCartProduct] = useState([]);
-
-  useEffect(() => {
-    fetch('products.json')
-      .then((res) => res.json())
-      .then((data) => SetProducts(data));
-  }, []);
-
-  useEffect(() => {
-    let storedCart = getStoredCart();
-    let finalCartProduct = [];
-    for (const key in storedCart) {
-      const element = key;
-      let findCartProduct = products.find((product) => element === product.id);
-      if (findCartProduct) {
-        let quantity = storedCart[element];
-        findCartProduct.quantity = quantity;
-        finalCartProduct.push(findCartProduct);
-      }
-    }
-    setCartProduct(finalCartProduct);
-    console.log(finalCartProduct);
-  }, [products]);
+  const { products, cartProduct } = useLoaderData();
 
   const handleAddToCart = (product) => {
-    let newCartProduct = [...cartProduct, product];
-    setCartProduct(newCartProduct);
     addToCart(product.id);
   };
 
