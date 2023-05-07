@@ -19,7 +19,7 @@ const SingleOrder = ({ cartProduct }) => {
             <div className='flex items-center border-gray-100'></div>
             <div className='flex items-center space-x-4'>
               <p className='text-sm'>
-                <span className='font-extrabold text-blue-500'>$</span>{' '}
+                <span className='font-bold text-blue-500'>$</span>{' '}
                 {price * quantity}
               </p>
               <svg

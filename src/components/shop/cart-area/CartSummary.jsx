@@ -31,8 +31,7 @@ const CartSummary = ({ cartProducts }) => {
               Selected Items: {cartProducts.length}
             </dt>
             <dd className=''>
-              Total Price:{' '}
-              <span className='font-extrabold text-blue-500'>$</span>
+              Total Price: <span className='font-bold text-blue-500'>$</span>
               {totalPrice}{' '}
             </dd>
           </div>
@@ -40,20 +39,19 @@ const CartSummary = ({ cartProducts }) => {
             <dt className=''>
               <span className='text-lg'>
                 Shipping Charge:{' '}
-                <span className='font-extrabold text-blue-500'>$</span>
+                <span className='font-abold text-blue-500'>$</span>
                 {shippingCharge}
               </span>
             </dt>
             <dd className='text-lg'>
-              Tax: <span className='font-extrabold text-blue-500'>$</span>
+              Tax: <span className='font-bold text-blue-500'>$</span>
               {taxInt}{' '}
             </dd>
           </div>
           <div className=''>
             <dt className=''>
               <span className='text-xl font-semibold pt-5'>
-                Grand Total:{' '}
-                <span className='font-extrabold text-blue-500'>$</span>
+                Grand Total: <span className='font-bold text-blue-500'>$</span>
                 {grandTotalInt}
               </span>
             </dt>
