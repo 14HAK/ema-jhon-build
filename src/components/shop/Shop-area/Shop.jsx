@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
-
 import Card from './card/Card';
-import { addToCart, getStoredCart } from '../../../lib/utilities/demo';
 import CartSummary from '../cart-area/CartSummary';
 import { useLoaderData } from 'react-router-dom';
+import { addToCart } from '../../../lib/utilities/demo';
 
 const Shop = () => {
-  const { products, cartProduct } = useLoaderData();
+  const { products, cartProducts } = useLoaderData();
 
   const handleAddToCart = (product) => {
     addToCart(product.id);
@@ -25,7 +23,7 @@ const Shop = () => {
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <CartSummary cartProduct={cartProduct}></CartSummary>
+        <CartSummary cartProducts={cartProducts}></CartSummary>
       </div>
     </div>
   );

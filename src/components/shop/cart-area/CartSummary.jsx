@@ -1,13 +1,13 @@
-const CartSummary = ({ cartProduct }) => {
-  for (const product of cartProduct) {
+const CartSummary = ({ cartProducts }) => {
+  for (const product of cartProducts) {
     product.quantity = product.quantity || 1;
   }
 
-  let totalPrice = cartProduct.reduce((previous, product) => {
+  let totalPrice = cartProducts.reduce((previous, product) => {
     return previous + product.price * product.quantity;
   }, 0);
 
-  let shippingCharge = cartProduct.reduce((previous, product) => {
+  let shippingCharge = cartProducts.reduce((previous, product) => {
     return previous + product.shipping;
   }, 0);
 
@@ -28,22 +28,33 @@ const CartSummary = ({ cartProduct }) => {
         <dl className=''>
           <div className=''>
             <dt className='pt-5 text-lg'>
-              Selected Items: {cartProduct.length}
+              Selected Items: {cartProducts.length}
             </dt>
-            <dd className=''>Total Price: ${totalPrice} </dd>
+            <dd className=''>
+              Total Price:{' '}
+              <span className='font-extrabold text-blue-500'>$</span>
+              {totalPrice}{' '}
+            </dd>
           </div>
           <div className=''>
             <dt className=''>
               <span className='text-lg'>
-                Shipping Charge: ${shippingCharge}
+                Shipping Charge:{' '}
+                <span className='font-extrabold text-blue-500'>$</span>
+                {shippingCharge}
               </span>
             </dt>
-            <dd className='text-lg'>Tax: ${taxInt} </dd>
+            <dd className='text-lg'>
+              Tax: <span className='font-extrabold text-blue-500'>$</span>
+              {taxInt}{' '}
+            </dd>
           </div>
           <div className=''>
             <dt className=''>
               <span className='text-xl font-semibold pt-5'>
-                Grand Total: ${grandTotalInt}
+                Grand Total:{' '}
+                <span className='font-extrabold text-blue-500'>$</span>
+                {grandTotalInt}
               </span>
             </dt>
             <hr className='border border-slate-700' />

@@ -1,16 +1,21 @@
 import { useLoaderData } from 'react-router-dom';
 import CartSummary from '../cart-area/CartSummary';
+import SingleOrder from './singleOrder/SingleOrder';
 
 const Orders = () => {
-  const { cartProduct } = useLoaderData();
+  const { cartProducts } = useLoaderData();
   return (
     <div className='grid grid-cols-12'>
-      <div className='cards col-span-9 p-10 grid grid-cols-3 gap-2'>
-        <h2 className='text-3xl text-slate-600'>All orders here</h2>
+      <div className='cards col-span-9 p-10 grid grid-cols-1 gap-2 justify-center'>
+        <div className=''>
+          {cartProducts.map((cartProduct, index) => (
+            <SingleOrder key={index} cartProduct={cartProduct}></SingleOrder>
+          ))}
+        </div>
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <CartSummary cartProduct={cartProduct}></CartSummary>
+        <CartSummary cartProducts={cartProducts}></CartSummary>
       </div>
     </div>
   );

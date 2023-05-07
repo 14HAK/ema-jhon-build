@@ -19,7 +19,7 @@ const loadAllProducts = async () => {
     }
   }
 
-  return { products, cartProduct: savedCartProduct };
+  return { products, cartProducts: savedCartProduct };
 };
 
 export default loadAllProducts;
