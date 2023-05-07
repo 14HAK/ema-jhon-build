@@ -4,6 +4,7 @@ const Layout = () => {
   return (
     <div>
       <Header></Header>
+      <p>main layout</p>
     </div>
   );
 };
