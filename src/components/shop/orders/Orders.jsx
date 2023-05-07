@@ -1,6 +1,8 @@
+import { useLoaderData } from 'react-router-dom';
 import CartSummary from '../cart-area/CartSummary';
 
 const Orders = () => {
+  const { cartProduct } = useLoaderData();
   return (
     <div className='grid grid-cols-12'>
       <div className='cards col-span-9 p-10 grid grid-cols-3 gap-2'>
@@ -8,7 +10,7 @@ const Orders = () => {
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <CartSummary cartProduct={[]}></CartSummary>
+        <CartSummary cartProduct={cartProduct}></CartSummary>
       </div>
     </div>
   );

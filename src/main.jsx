@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/orders',
         element: <Orders></Orders>,
+        loader: loadAllProducts,
       },
       {
         path: '/inventory',
