@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import { addToCart } from '../../../lib/utilities/demo';
 
 const Shop = () => {
-  const { products, cartProducts } = useLoaderData();
+  let { products, cartProducts, handleClearCart } = useLoaderData();
 
   const handleAddToCart = (product) => {
     addToCart(product.id);
@@ -23,7 +23,10 @@ const Shop = () => {
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <CartSummary cartProducts={cartProducts}></CartSummary>
+        <CartSummary
+          cartProducts={cartProducts}
+          handleClearCart={handleClearCart}
+        ></CartSummary>
       </div>
     </div>
   );

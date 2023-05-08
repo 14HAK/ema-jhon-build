@@ -1,4 +1,4 @@
-const CartSummary = ({ cartProducts }) => {
+const CartSummary = ({ cartProducts, handleClearCart }) => {
   for (const product of cartProducts) {
     product.quantity = product.quantity || 1;
   }
@@ -61,6 +61,7 @@ const CartSummary = ({ cartProducts }) => {
         <div className='pt-5 text-center'>
           <button
             type='button'
+            onClick={() => handleClearCart()}
             className='w-full text-red-700 hover:text-white border border-red-700 hover:bg-red-500  font-medium rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 '
           >
             Clear Cart

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { removeFromDb } from '../../../lib/utilities/demo';
 
 const Orders = () => {
-  const { cartProducts } = useLoaderData();
+  const { cartProducts, handleClearCart } = useLoaderData();
   const [cartPros, setCartPros] = useState(cartProducts);
 
   const handleClickRemove = (id) => {
@@ -31,7 +31,10 @@ const Orders = () => {
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <CartSummary cartProducts={cartPros}></CartSummary>
+        <CartSummary
+          cartProducts={cartPros}
+          handleClearCart={handleClearCart}
+        ></CartSummary>
       </div>
     </div>
   );
