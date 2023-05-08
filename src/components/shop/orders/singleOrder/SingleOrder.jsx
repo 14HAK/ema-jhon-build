@@ -1,7 +1,7 @@
 import { FaTrashAlt } from 'react-icons/fa';
 
-const SingleOrder = ({ cartProduct }) => {
-  const { name, img, price, quantity, shipping } = cartProduct;
+const SingleOrder = ({ cartProduct, handleClick }) => {
+  const { id, name, img, price, quantity, shipping } = cartProduct;
 
   return (
     <div className=' rounded-lg'>
@@ -27,7 +27,10 @@ const SingleOrder = ({ cartProduct }) => {
                 <span className='font-bold text-blue-500'>$</span>{' '}
                 {price * quantity}
               </p>
-              <FaTrashAlt className='text-xl text-red-500 hover:text-red-700 cursor-pointer' />
+              <button onClick={() => handleClick(id)}>
+                {' '}
+                <FaTrashAlt className='text-xl text-red-500 hover:text-red-700 cursor-pointer' />
+              </button>
             </div>
           </div>
         </div>
