@@ -1,4 +1,4 @@
-const CartSummary = ({ cartProducts, handleClearCart }) => {
+const CartSummary = ({ cartProducts, handleClearCart, children }) => {
   console.log(cartProducts);
   for (const product of cartProducts) {
     product.quantity = product.quantity || 1;
@@ -68,14 +68,7 @@ const CartSummary = ({ cartProducts, handleClearCart }) => {
             Clear Cart
           </button>
         </div>
-        <div className='pt-0 text-center'>
-          <button
-            type='button'
-            className='w-full text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 '
-          >
-            Review Order
-          </button>
-        </div>
+        <div className='pt-0 text-center'>{children}</div>
       </section>
     </div>
   );

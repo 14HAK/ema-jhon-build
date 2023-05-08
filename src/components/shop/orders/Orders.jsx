@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CartSummary from '../cart-area/CartSummary';
 import SingleOrder from './singleOrder/SingleOrder';
 import { useState } from 'react';
@@ -36,10 +36,16 @@ const Orders = () => {
       </div>
 
       <div className='orders-summery col-span-3 p-5 bg-slate-200'>
-        <CartSummary
-          cartProducts={cartPros}
-          handleClearCart={handleClearCart}
-        ></CartSummary>
+        <CartSummary cartProducts={cartPros} handleClearCart={handleClearCart}>
+          <Link to={'/'}>
+            <button
+              type='button'
+              className='w-full text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 '
+            >
+              Proceed Checkout
+            </button>
+          </Link>
+        </CartSummary>
       </div>
     </div>
   );
