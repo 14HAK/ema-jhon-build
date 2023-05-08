@@ -1,4 +1,4 @@
-import { deleteShoppingCart, getStoredCart } from '../../lib/utilities/demo';
+import { getStoredCart } from '../../lib/utilities/demo';
 
 // load product data and then compare to localStorage cart
 const loadAllProducts = async () => {
@@ -19,12 +19,7 @@ const loadAllProducts = async () => {
     }
   }
 
-  // clear all the data in localstorage named cart
-  const handleClearCart = () => {
-    deleteShoppingCart();
-  };
-
-  return { products, cartProducts: savedCartProduct, handleClearCart };
+  return { products, cartProducts: savedCartProduct };
 };
 
 export default loadAllProducts;

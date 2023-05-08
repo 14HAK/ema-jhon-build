@@ -2,16 +2,21 @@ import { useLoaderData } from 'react-router-dom';
 import CartSummary from '../cart-area/CartSummary';
 import SingleOrder from './singleOrder/SingleOrder';
 import { useState } from 'react';
-import { removeFromDb } from '../../../lib/utilities/demo';
+import { deleteShoppingCart, removeFromDb } from '../../../lib/utilities/demo';
 
 const Orders = () => {
-  const { cartProducts, handleClearCart } = useLoaderData();
+  const { cartProducts } = useLoaderData();
   const [cartPros, setCartPros] = useState(cartProducts);
 
   const handleClickRemove = (id) => {
     let extraItem = cartPros.filter((product) => product.id !== id);
     setCartPros(extraItem);
     removeFromDb(id);
+  };
+
+  const handleClearCart = () => {
+    setCartPros([]);
+    deleteShoppingCart();
   };
 
   console.log(cartPros);

@@ -1,13 +1,17 @@
 import Card from './card/Card';
 import CartSummary from '../cart-area/CartSummary';
 import { useLoaderData } from 'react-router-dom';
-import { addToCart } from '../../../lib/utilities/demo';
+import { addToCart, deleteShoppingCart } from '../../../lib/utilities/demo';
 
 const Shop = () => {
-  let { products, cartProducts, handleClearCart } = useLoaderData();
+  let { products, cartProducts } = useLoaderData();
 
   const handleAddToCart = (product) => {
     addToCart(product.id);
+  };
+
+  const handleClearCart = () => {
+    deleteShoppingCart();
   };
 
   return (
