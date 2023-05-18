@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/layout/Layout.jsx';
@@ -10,6 +9,8 @@ import Inventory from './components/inventory/Inventory.jsx';
 import Login from './components/login/Login.jsx';
 import loadAllProducts from './components/loadData/LoadData.js';
 import ErrorPage from './components/errorPage/ErrorPage.jsx';
+import Context from './Context/Context.jsx';
+import Resister from './components/resister/Resister';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
+        path: '/resister',
+        element: <Resister></Resister>,
+      },
+      {
         path: '*',
         element: <ErrorPage></ErrorPage>,
       },
@@ -50,8 +55,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <Context>
+      <RouterProvider router={router}></RouterProvider>
+    </Context>
   </React.StrictMode>
 );

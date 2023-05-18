@@ -1,8 +1,12 @@
 import './Header.module.css';
 import Image from '../../lib/images/Logo.svg';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { MyAuthContext } from '../../Context/Context';
 
 const Header = () => {
+  const { user } = useContext(MyAuthContext);
+
   return (
     <div className='flex justify-between items-center bg-slate-600 px-10'>
       <div>
@@ -33,8 +37,30 @@ const Header = () => {
               Login
             </Link>
           </li>
+          <li>
+            <Link to='/resister' className='pl-5'>
+              Resister
+            </Link>
+          </li>
         </ul>
       </nav>
+      <div className='flex p-2 whitespace-nowrap'>
+        <button className='inline-flex items-center bg-white border-0 py-3 px-3 focus:outline-none  hover:bg-green-400 hover:text-white rounded-s-md text-base mt-4 -mr-3 w-24 md:mt-0 font-semibold'>
+          Log out
+        </button>
+        <div className='flex items-center bg-slate-500 px-3 py-1 rounded-e-md'>
+          <div className='w-10 h-10 flex-shrink-0 mr-2 sm:mr-3'>
+            <img
+              className='rounded-full'
+              src='https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg'
+              width='60'
+              height='60'
+              alt='user-photo'
+            />
+          </div>
+          <div className='font-medium text-white'>{user.name}</div>
+        </div>
+      </div>
     </div>
   );
 };
