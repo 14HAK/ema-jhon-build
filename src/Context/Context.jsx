@@ -15,6 +15,7 @@ export const MyAuthContext = createContext(null);
 const Context = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -24,6 +25,7 @@ const Context = ({ children }) => {
   };
 
   const logIn = (email, password) => {
+    setIsLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -32,6 +34,7 @@ const Context = ({ children }) => {
   };
 
   const googleLogin = () => {
+    setIsLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -40,6 +43,7 @@ const Context = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+        setIsLoading(false);
       } else {
         console.log('error occurred!');
       }
@@ -59,6 +63,7 @@ const Context = ({ children }) => {
     logOut,
     currentUser,
     setCurrentUser,
+    isLoading,
   };
 
   return (

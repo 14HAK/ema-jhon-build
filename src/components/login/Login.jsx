@@ -1,10 +1,18 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MyAuthContext } from '../../Context/Context';
 
 const Login = () => {
   const { errorMsg, setErrorMsg, logIn, googleLogin, setCurrentUser } =
     useContext(MyAuthContext);
+
+  // in use for private route
+  const location = useLocation();
+  const navigate = useNavigate();
+  // get this path remember we will set this PrivateRoute.jsx
+
+  const from = location.state?.from?.pathname || '/';
+  // console.log(from);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -17,15 +25,20 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         form.reset();
+        //when kik login then login user and go to that place when he goes to
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setErrorMsg(error.message);
       });
   };
+
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
         setCurrentUser(result.user);
+        //when kik login then login user and go to that place when he goes to
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setErrorMsg(error.message);
