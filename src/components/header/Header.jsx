@@ -38,6 +38,11 @@ const Header = () => {
             </Link>
           </li>
           <li>
+            <Link to='/checkout' className='pl-5'>
+              Checkout
+            </Link>
+          </li>
+          <li>
             <Link to='/inventory' className='pl-5'>
               Inventory
             </Link>

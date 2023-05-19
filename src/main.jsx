@@ -11,6 +11,8 @@ import loadAllProducts from './components/loadData/LoadData.js';
 import ErrorPage from './components/errorPage/ErrorPage.jsx';
 import Context from './Context/Context.jsx';
 import Resister from './components/resister/Resister';
+import Checkout from './components/private/checkoutCart/Checkout';
+import PrivateRoute from './components/private/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
       {
         path: '/resister',
         element: <Resister></Resister>,
+      },
+      {
+        path: '/checkout',
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
       },
       {
         path: '*',
