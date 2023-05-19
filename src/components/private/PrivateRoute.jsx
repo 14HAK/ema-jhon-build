@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   //first need location on react router don
   const location = useLocation();
   // console.log(location);
-
+  console.log(isLoading);
   if (isLoading) {
     return <Loading></Loading>;
   }

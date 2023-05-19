@@ -9,10 +9,10 @@ import Inventory from './components/inventory/Inventory.jsx';
 import Login from './components/login/Login.jsx';
 import loadAllProducts from './components/loadData/LoadData.js';
 import ErrorPage from './components/errorPage/ErrorPage.jsx';
-import Context from './Context/Context.jsx';
 import Resister from './components/resister/Resister';
 import Checkout from './components/private/checkoutCart/Checkout';
 import PrivateRoute from './components/private/PrivateRoute';
+import Context from './Context/Context';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/inventory',
-        element: <Inventory></Inventory>,
+        element: (
+          <PrivateRoute>
+            <Inventory></Inventory>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/login',

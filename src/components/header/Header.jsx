@@ -43,9 +43,11 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to='/inventory' className='pl-5'>
-              Inventory
-            </Link>
+            {currentUser && (
+              <Link to='/inventory' className='pl-5'>
+                Inventory
+              </Link>
+            )}
           </li>
           <li>
             <Link to='/login' className='pl-5'>
