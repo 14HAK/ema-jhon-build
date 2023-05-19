@@ -1,11 +1,11 @@
 import './Header.module.css';
 import Image from '../../lib/images/Logo.svg';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { MyAuthContext } from '../../Context/Context';
+// import { useContext } from 'react';
+// import { MyAuthContext } from '../../Context/Context';
 
 const Header = () => {
-  const { user } = useContext(MyAuthContext);
+  // const { user } = useContext(MyAuthContext);
 
   return (
     <div className='flex justify-between items-center bg-slate-600 px-10'>
@@ -58,7 +58,7 @@ const Header = () => {
               alt='user-photo'
             />
           </div>
-          <div className='font-medium text-white'>{user.name}</div>
+          <div className='font-medium text-white'>myName</div>
         </div>
       </div>
     </div>
