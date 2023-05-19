@@ -1,11 +1,21 @@
 import './Header.module.css';
 import Image from '../../lib/images/Logo.svg';
 import { Link } from 'react-router-dom';
-// import { useContext } from 'react';
-// import { MyAuthContext } from '../../Context/Context';
+import { useContext } from 'react';
+import { MyAuthContext } from '../../Context/Context';
 
 const Header = () => {
-  // const { user } = useContext(MyAuthContext);
+  const { currentUser, setCurrentUser, logOut } = useContext(MyAuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        setCurrentUser(null);
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <div className='flex justify-between items-center bg-slate-600 px-10'>
@@ -45,7 +55,10 @@ const Header = () => {
         </ul>
       </nav>
       <div className='flex p-2 whitespace-nowrap'>
-        <button className='inline-flex items-center bg-white border-0 py-3 px-3 focus:outline-none  hover:bg-green-400 hover:text-white rounded-s-md text-base mt-4 -mr-3 w-24 md:mt-0 font-semibold'>
+        <button
+          onClick={handleLogout}
+          className='inline-flex items-center bg-white border-0 py-3 px-3 focus:outline-none  hover:bg-green-400 hover:text-white rounded-s-md text-base mt-4 -mr-3 w-24 md:mt-0 font-semibold'
+        >
           Log out
         </button>
         <div className='flex items-center bg-slate-500 px-3 py-1 rounded-e-md'>
@@ -58,7 +71,9 @@ const Header = () => {
               alt='user-photo'
             />
           </div>
-          <div className='font-medium text-white'>myName</div>
+          <div className='font-medium text-white'>
+            {currentUser ? currentUser?.email : 'no user here'}
+          </div>
         </div>
       </div>
     </div>

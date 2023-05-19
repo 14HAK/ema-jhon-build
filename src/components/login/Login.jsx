@@ -1,6 +1,37 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { MyAuthContext } from '../../Context/Context';
 
 const Login = () => {
+  const { errorMsg, setErrorMsg, logIn, googleLogin, setCurrentUser } =
+    useContext(MyAuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setErrorMsg(null);
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    logIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        form.reset();
+      })
+      .catch((error) => {
+        setErrorMsg(error.message);
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        setCurrentUser(result.user);
+      })
+      .catch((error) => {
+        setErrorMsg(error.message);
+      });
+  };
+
   return (
     <div>
       <div className='p-10'>
@@ -8,7 +39,10 @@ const Login = () => {
           <h1 className='text-4xl font-medium'>Login</h1>
 
           <div className='my-5'>
-            <button className='w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150'>
+            <button
+              onClick={handleGoogleLogin}
+              className='w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150'
+            >
               <img
                 src='https://www.svgrepo.com/show/355037/google.svg'
                 className='w-6 h-6'
@@ -17,7 +51,7 @@ const Login = () => {
               <span>Login with Google</span>
             </button>
           </div>
-          <form action='' className='my-10'>
+          <form onSubmit={handleLogin} className='my-10'>
             <div className='flex flex-col space-y-5'>
               <label htmlFor='email'>
                 <p className='font-medium text-slate-700 pb-2'>Email address</p>
@@ -38,6 +72,11 @@ const Login = () => {
                   className='w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow'
                   placeholder='******'
                 />
+                <p>
+                  <small className='text-red-700 mt-2 font-serif ms-1'>
+                    {errorMsg && errorMsg}
+                  </small>
+                </p>
               </label>
               <div className='flex flex-row justify-between'>
                 <div>

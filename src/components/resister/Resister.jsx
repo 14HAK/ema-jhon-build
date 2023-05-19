@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { MyAuthContext } from '../../Context/Context';
 
 const Resister = () => {
-  const { errorMsg, setErrorMsg, createUser } = useContext(MyAuthContext);
+  const { errorMsg, setErrorMsg, createUser, setCurrentUser } =
+    useContext(MyAuthContext);
 
+  //create user firebase email and password
   const handleResister = (event) => {
     event.preventDefault();
     setErrorMsg(null);
@@ -18,6 +20,8 @@ const Resister = () => {
     } else {
       createUser(email, password)
         .then((result) => {
+          setCurrentUser(result.user);
+          form.reset();
           // console.log(result.user);
         })
         .catch((error) => {
